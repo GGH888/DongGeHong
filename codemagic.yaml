@@ -5,8 +5,9 @@ workflows:
     environment:
       flutter: stable
     scripts:
+      - name: Grant execute permission
+        script: chmod +x gradlew
       - name: Build APK
-        script: |
-          ./gradlew assembleDebug
+        script: ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/apk/debug/*.apk
