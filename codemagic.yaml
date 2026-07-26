@@ -7,6 +7,10 @@ workflows:
     scripts:
       - name: Grant execute permission
         script: chmod +x gradlew
+      - name: Download gradle-wrapper.jar
+        script: |
+          mkdir -p gradle/wrapper
+          curl -L -o gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/raw/v8.2.0/gradle/wrapper/gradle-wrapper.jar
       - name: Build APK
         script: ./gradlew assembleDebug
     artifacts:
