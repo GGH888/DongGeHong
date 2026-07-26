@@ -17,8 +17,7 @@
             android:text="东哥红 V3.12"
             android:textSize="28sp"
             android:textColor="#00D4FF"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,14 +28,6 @@
             android:layout_marginBottom="20dp"/>
 
         <!-- 联赛选择 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="📋 选择联赛"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:layout_marginBottom="4dp"/>
-
         <Spinner
             android:id="@+id/leagueSpinner"
             android:layout_width="match_parent"
@@ -66,39 +57,43 @@
             android:textColor="#FFFFFF"
             android:background="#1A1A2E"
             android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ===== 新增：自动获取数据按钮 ===== -->
+        <Button
+            android:id="@+id/fetchDataBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="📡 自动获取球队数据"
+            android:background="#FF6B35"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
             android:layout_marginBottom="12dp"/>
 
-        <!-- 历史交锋（可选） -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="📊 历史交锋（可选）"
-            android:textColor="#888888"
-            android:textSize="12sp"
-            android:layout_marginBottom="4dp"/>
+        <!-- 开始预测按钮（原已有） -->
+        <Button
+            android:id="@+id/predictBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="🚀 开始预测"
+            android:background="#00D4FF"
+            android:textColor="#0F0F1A"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
 
-        <LinearLayout
+        <!-- 结果显示 -->
+        <TextView
+            android:id="@+id/resultText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/historyHomeInput"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:hint="主胜"
-                android:textColorHint="#666688"
-                android:textColor="#FFFFFF"
-                android:background="#1A1A2E"
-                android:padding="12dp"
-                android:inputType="number"
-                android:layout_marginEnd="4dp"/>
-
-            <EditText
-                android:id="@+id/historyDrawInput"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
+            android:padding="16dp"
+            android:background="#1A1A2E"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:minHeight="200dp"
+            android:typeface="monospace"/>
+    </LinearLayout>
+</ScrollView>                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:hint="平"
                 android:textColorHint="#666688"
