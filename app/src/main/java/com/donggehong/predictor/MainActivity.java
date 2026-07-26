@@ -27,12 +27,10 @@ public class MainActivity extends AppCompatActivity {
         awayTeamInput = findViewById(R.id.awayTeamInput);
         resultText = findViewById(R.id.resultText);
 
-        // 联赛选项（包含德甲/德乙）
         String[] leagues = {"韩职", "欧战", "芬超", "瑞超", "挪超", "巴甲", "德甲", "德乙"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, leagues);
         leagueSpinner.setAdapter(adapter);
 
-        // ===== 新增：自动获取数据按钮 =====
         findViewById(R.id.fetchDataBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ===== 原“开始预测”按钮（增强版，使用 V3.12 权重模型） =====
         findViewById(R.id.predictBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,23 +82,44 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                // 构造球队数据（实际应使用从网络获取的缓存数据，这里用模拟数据演示）
                 TeamData homeData = new TeamData();
                 homeData.name = home;
-                homeData.wins = 5; homeData.draws = 3; homeData.losses = 2;
+                homeData.wins = 5;
+                homeData.draws = 3;
+                homeData.losses = 2;
                 homeData.form = "胜胜平平胜";
                 homeData.avgGoalsFor = 1.8;
                 homeData.avgGoalsAgainst = 1.2;
 
                 TeamData awayData = new TeamData();
                 awayData.name = away;
-                awayData.wins = 4; awayData.draws = 2; awayData.losses = 4;
+                awayData.wins = 4;
+                awayData.draws = 2;
+                awayData.losses = 4;
                 awayData.form = "胜负平胜负";
                 awayData.avgGoalsFor = 1.5;
                 awayData.avgGoalsAgainst = 1.6;
 
                 Predictor predictor = new Predictor();
                 PredictionResult result = predictor.predict(homeData, awayData, league);
+
+                String output = "🏠 " + home + " vs " + away + " ✈️\n";
+                output += "📋 联赛：" + league + "\n\n";
+                output += "🟢 主胜 " + result.homeProb + "%\n";
+                output += "🟡 平局 " + result.drawProb + "%\n";
+                output += "🔵 客胜 " + result.awayProb + "%\n\n";
+                output += "⚽ 预测结论：" + (result.homeProb > result.drawProb && result.homeProb > result.awayProb ? "主胜" :
+                        (result.awayProb > result.drawProb ? "客胜" : "平局")) + "\n";
+                output += "📈 半全场：" + result.halfFull + "\n";
+                output += "🎯 总进球数：" + result.totalGoals + " 球\n";
+                output += "📝 比分预测：" + result.score + "\n\n";
+                output += "📊 V3.12 权重模型";
+
+                resultText.setText(output);
+            }
+        });
+    }
+}                PredictionResult result = predictor.predict(homeData, awayData, league);
 
                 String output = "🏠 " + home + " vs " + away + " ✈️\n";
                 output += "📋 联赛：" + league + "\n\n";
