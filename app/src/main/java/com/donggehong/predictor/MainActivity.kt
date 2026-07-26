@@ -3,8 +3,11 @@ package com.donggehong.predictor
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,7 +31,11 @@ class MainActivity : ComponentActivity() {
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF00D4FF)
                     )
-                    Text("多模型协同推演系统", fontSize = 14.sp, color = Color.Gray)
+                    Text(
+                        "构建成功！",
+                        fontSize = 18.sp,
+                        color = Color.Green
+                    )
                 }
             }
         }
